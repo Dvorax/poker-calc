@@ -5,5 +5,5 @@ module.exports = (cardsLeft) => {
         return 1;
     }
 
-    return 1 / 13;
+    return 1/13 + (cardsLeft === 3 ? 2 : 0) / 13 / 13;
 };
