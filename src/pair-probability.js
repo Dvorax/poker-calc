@@ -5,7 +5,7 @@ const pairProbability = (cardsLeft) => {
         return 1;
     }
 
-    const magicNumber = cardsLeft - 1; // what does this represent?
+    const magicNumber = cardsLeft - 1;
     return magicNumber / Math.pow(13, magicNumber) + pairProbability(magicNumber);
 };
 
