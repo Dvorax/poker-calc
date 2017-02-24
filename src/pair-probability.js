@@ -5,8 +5,7 @@ const pairProbability = (cardsLeft) => {
         return 1;
     }
 
-    const magicNumber = cardsLeft - 1;
-    return magicNumber / Math.pow(13, magicNumber) + pairProbability(magicNumber);
+    return (13 - (cardsLeft - 2)) / 13 * (cardsLeft - 1) / 13 + pairProbability(cardsLeft - 1); 
 };
 
 module.exports = pairProbability;
