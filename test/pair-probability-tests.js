@@ -13,4 +13,8 @@ describe('pairProbability', () => {
     it('should give 1 when there are 14 cards left to draw', () => {
         assert.equal(1, calc(14));
     });
+
+    it('should give 1/13 + 1/13*2/13 when there are 3 cards to draw', () => {
+        assert.equal(1/13 + 1/13*2/13, calc(3));
+    });
 });
