@@ -5,7 +5,11 @@ const pairProbability = (cardsLeft) => {
         return 1;
     }
 
-    return (13 - (cardsLeft - 2)) / 13 * (cardsLeft - 1) / 13 + pairProbability(cardsLeft - 1); 
+    const pairOnEarlierCards = pairProbability(cardsLeft - 1);
+    const avoidEarlierPairs = (13 - (cardsLeft - 2)) / 13;
+    const pairOnNthCard = (cardsLeft - 1) / 13;
+    
+    return pairOnEarlierCards + avoidEarlierPairs * pairOnNthCard; 
 };
 
 module.exports = pairProbability;
