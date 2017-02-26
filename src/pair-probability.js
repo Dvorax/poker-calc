@@ -1,20 +1,41 @@
 "use strict";
 
 const pairProbability = (cardsLeft) => {
-    if (cardsLeft === 0) {
+    if (cardsLeft < 2) {
         return 0;
     } else if (cardsLeft === 14) {
         return 1;
     }
 
-    const pairOnEarlierCards = pairProbability(cardsLeft - 1);
-    const pairOnNthCard = (cardsLeft - 1) / 13;
-    let avoidEarlierPairs = 1;
-    for (let i = 1; i + 1 < cardsLeft; i++) {
-        avoidEarlierPairs = avoidEarlierPairs * (13 - (cardsLeft - 1 - i)) / 13;
-    }
+    const magicNumber = cardsLeft - 1;
+    const pairOnEarlierCards = pairProbability(magicNumber);
+    const pairOnNthCard = chanceOfPairOnNthDraw(magicNumber);
     
-    return pairOnEarlierCards + avoidEarlierPairs * pairOnNthCard; 
+    return pairOnEarlierCards + pairOnNthCard; 
 };
+
+const chanceOfPairOnNthDraw = (nthDraw) => {
+    return chanceToHit(nthDraw) * chanceOfAvoidingEarlierHits(nthDraw);
+};
+
+const chanceOfAvoidingEarlierHits = (nthDraw) => {
+    return factorial(12) / factorial(13 - nthDraw) / Math.pow(13, nthDraw - 1);
+};
+
+const chanceToHit = (nthDraw) => {
+    return nthDraw / 13;
+};
+
+const chanceToMiss = (nthDraw) => {
+    return 1 - chanceToHit(nthDraw);
+};
+
+const factorial = (n) => {
+    if (n === 0) {
+        return 1;
+    }
+
+    return n * factorial(n - 1);
+}
 
 module.exports = pairProbability;
