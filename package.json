@@ -1,4 +1,6 @@
 {
+    "name": "poker-calc",
+    "version": "v0.0.1",
     "scripts": {
         "test": "mocha"
     }

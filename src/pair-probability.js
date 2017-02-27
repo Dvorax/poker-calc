@@ -1,4 +1,5 @@
 "use strict";
+var factorial = require('../src/factorial');
 
 const pairProbability = (cardsLeft) => {
     if (cardsLeft < 2) {
@@ -29,13 +30,5 @@ const chanceToHit = (nthDraw) => {
 const chanceToMiss = (nthDraw) => {
     return 1 - chanceToHit(nthDraw);
 };
-
-const factorial = (n) => {
-    if (n === 0) {
-        return 1;
-    }
-
-    return n * factorial(n - 1);
-}
 
 module.exports = pairProbability;
