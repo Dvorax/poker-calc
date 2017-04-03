@@ -1,5 +1,5 @@
 "use strict";
-var factorial = require('../src/factorial');
+var factorial = require('./factorial');
 
 const pairProbability = (cardsLeft) => {
     if (cardsLeft < 2) {
